@@ -10,7 +10,7 @@
             <p>{{ user.followers.count() }} followers, || {{ user.followed.count() }} followed</p>
             {% if user == current_user %}
             <p><a href="{{ url_for('edit_profile') }}">Edit your proile</a></p>
-            {% elif not cuurent_user.is_following(user) %}
+            {% elif not current_user.is_following(user) %}
             <p><a href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
             {% else %}
             <p><a href="{{ url_for('unfillow', username=user.username) }}">Unfollow</a></p>
@@ -23,5 +23,7 @@
 {% for post in posts %}
     {% include "_post.html" %}
 {% endfor %}
+
+{% include "_prev_next_page.html" %}
 
 {% endblock %}
